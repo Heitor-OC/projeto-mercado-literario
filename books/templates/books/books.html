@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .category-section {
+            margin-bottom: 40px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card h1 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .category-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: capitalize;
+            font-size: 70px;
+        }
+        .old-price span {
+            text-decoration: line-through;
+            color: #636262;
+        }
+        .page-selector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/pagination.js' %}"></script>
+</head>
+<body>
+    {% load custom_tags %}
+    {% include 'books/navbar.html' %}
+
+    {% for category, page_obj in grouped_books.items %}
+        {% if category == selected_category %}
+            <div class="category-section">
+                <h1 class="category-title">{{ category }}</h1>
+                <div id="books-container-{{ category }}" data-url="{% url 'books:display_books' %}">
+                    {% include 'books/book_list.html' with page_obj=page_obj %}
+                </div>
+                <div class="page-selector" id="pagination-container-{{ category }}">
+                    {% include 'books/pagination.html' with page_obj=page_obj category=category %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

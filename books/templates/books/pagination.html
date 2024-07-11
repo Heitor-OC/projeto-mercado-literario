@@ -1,0 +1,15 @@
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="javascript:void(0);" onclick="loadPage('{{ category }}', {{ page_obj.previous_page_number }})">&#60;</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="javascript:void(0);" onclick="loadPage('{{ category }}', {{ page_obj.next_page_number }})">&#62;</a>
+        {% endif %}
+    </span>
+</div>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análise de Mercado</title>
+    <style>
+        body, html {
+            font-family: 'Fira Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        .graph {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid lightgray;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            max-width: 100%; /* Garantir que o gráfico não ultrapasse a largura do monitor */
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1, h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .half-width {
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .full-width {
+            max-width: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .half-width {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% load custom_tags %}
+    {% include 'books/navbar.html' %}
+
+    <br><br>
+    <h1>Análise do Mercado Literário</h1>
+
+    <div class="graph full-width">
+        <h2>Preços por Categoria</h2>
+        {{ bar_graph|safe }}
+    </div>
+
+    <div class="container">
+        <div class="graph half-width">
+            <h2>Quantidade de Livros por Categoria</h2>
+            {{ pie_chart|safe }}
+        </div>
+        <div class="graph half-width">
+            <h2>Quantidade de Livros por Categoria</h2>
+            {{ line_chart|safe }}
+        </div>
+    </div>
+
+    <div class="graph full-width">
+        <h2>Preços de Cada Livro</h2>
+        {{ scatter_plot|safe }}
+    </div>
+
+    <div class="graph full-width">
+        <h2>Regressão Linear: Preço vs Categoria</h2>
+        <img src="data:image/png;base64,{{ regression_plot }}" alt="Linear Regression 1">
+    </div>
+
+    <div class="graph full-width">
+        <h2>Clusterização de Livros por Preço</h2>
+        <div>{{ scatter_cluster|safe }}</div>
+    </div>
+</body>
+</html>

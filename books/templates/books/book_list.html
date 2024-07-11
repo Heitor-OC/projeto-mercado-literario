@@ -1,0 +1,17 @@
+<div class="grid-container">
+        {% for book in page_obj %}
+            {% if book %}
+            <div class="card">
+                <img src="{{ book.image_url }}" alt="{{ book.title }}">
+                <h1>{{ book.title }}</h1>
+                {% if book.old_price %}
+                    <h1 class="old-price"><span><del>R$ {{ book.old_price|floatformat:2 }}</del></span><br>R$ {{ book.new_price|floatformat:2 }}</h1>
+                {% else %}
+                    <h1>R$ {{ book.new_price|floatformat:2 }}</h1>
+                {% endif %}
+            </div>
+            {% else %}
+                <h1>Não há livros cadastrados nessa categoria</h1>
+            {% endif %}
+        {% endfor %}
+</div>

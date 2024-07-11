@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scraping Form</title>
+</head>
+<body>
+    <h1>Scraping de Livros</h1>
+    <form method="post" action="{% url 'books:scrape_books' %}">
+        {% csrf_token %}
+        <label for="pages">Número de páginas para scraping:</label>
+        <input type="number" id="pages" name="pages" min="1" required>
+        <button type="submit">Iniciar Scraping</button>
+    </form>
+</body>
+</html>

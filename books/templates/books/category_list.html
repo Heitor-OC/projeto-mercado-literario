@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categorias</title>
+    <style>
+        .category-list {
+            text-align: center;
+            margin: 20px;
+        }
+        .category-list a {
+            display: block;
+            padding: 10px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #000;
+        }
+        .category-list a:hover {
+            background-color: #f0f0f0;
+        }
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    {% load custom_tags %}
+
+    <h1>Categorias</h1>
+    <div class="category-list">
+        {% for category in categories %}
+            <a href="{% url 'books:display_books' %}?category={{ category.name }}">{{ category.name|pretty_category }}</a>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Projeto Mercado Literario</title>
+    <style>
+        body {
+            font-family: 'Fira Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+
+        .section {
+            padding: 60px 40px;
+            border-radius: 65px;
+            margin: 20px auto;
+            max-width: 940px;
+        }
+
+        .section-1 {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-2,
+        .section-3 {
+            background-color: #f3e8fd;
+            width: calc(50% - 30px); /* 50% width minus 10px for the gap */
+            height: auto;
+            margin-top: 20px;
+            max-width: 460px;
+            max-height: 620px;
+        }
+
+        .section-2 {
+            background-color: #f3e8fd;
+        }
+
+        .section-3 {
+            background-color: #e8f7ff;
+        }
+
+        .section-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .section img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .section h1 {
+            color: #333;
+            margin: 5px 0;
+            font-weight: bold;
+            font-size: 55px;
+            text-align: left;
+        }
+
+        .section p {
+            color: #666;
+            line-height: 1.6;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-family: "Fira Sans", sans-serif;
+            color: rgb(72, 187, 237);
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 45px;
+        }
+
+        h2 {
+            font-family: "Fira Sans", sans-serif;
+            color: #333;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            
+        }
+
+        p {
+            font-family: "Fira Sans", sans-serif;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 500px; /* Ajuste conforme necessário */
+            margin: 40px auto;
+            line-height: 1.5; /* Ajuste conforme necessário */
+            font-size: 16px;
+        }
+
+        img {
+            border-radius: 40px;
+        }
+
+        .section-1 img {
+            background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(240, 240, 240) 100%);
+        }
+
+        .section-2 img {
+            background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(243, 232, 253) 100%);
+            margin: 0 auto;
+        }
+
+        .section-3 img {
+            background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(232, 247, 255) 100%);
+        }
+
+        .half-width {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            width: 57%;
+            margin: 0 auto;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            width: 40%;
+            margin: 0 auto;
+            
+        }
+        .info h1, .info h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .cat-info, .book-info {
+            padding: 20px;
+            border-radius: 40px;
+            border: 2px solid #333;
+            box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .libs {
+            text-align: center;
+            list-style: none;
+        }
+
+        .libs li {
+            color: #333;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+      
+
+        span {
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+{% load static %}
+{% include 'books/navbar.html' %}
+
+<br><br>
+<h2>Projeto de Análise de Dados do</h2>
+<h1>Mercado Literário Brasileiro</h1>
+<p>Uma ferramenta de análise de dados focada no mercado de livros para fornecer insights sobre tendências de leitura, categorias de livros, preços, entre outros.</p>
+
+
+<div class="info">
+    <div class="book-info">
+        <h1>Total de livros</h1>
+        <h2>{{num_books}}</h2>
+    </div>
+
+    <div class="cat-info">
+        <h1>Categorias</h1>
+        <h2>{{num_categories}}</h2>
+    </div>
+    
+    
+</div>
+
+<div class="section section-1">
+    <div class="section-content">
+        <h1>Dashboard com bibliotecas Python</h1>
+        <p>Dashboard criado com a utilização de bibliotecas de visualização de dados, aprendizagem de máquina e tratamento de dados em ambiente web:
+            <ul class="libs">
+                <li>MatPlotLib</li>
+                <li>Plotly</li>
+                <li>Seaborn</li>
+                <li>Scikit-Learn</li>
+                <li>Pandas</li>
+            </ul>
+            
+        </p>
+    </div>
+    <img src="{% static 'images/data_graph.png' %}" alt="Analytics tools">
+</div>
+
+<div class="half-width">
+    <div class="section section-2">
+        <div class="section-content">
+            <h1>Web Scraping</h1>
+            <p>Processo de ETL feito por meio de: </p>
+                <p>Web Scraping&nbsp;<span>(BeautifulSoup)</span></p>
+                <p>Tratamento de dados&nbsp;<span>(Pandas)</span></p>
+                <p>Carregamento de dados em formato&nbsp;<span>JSON</span>&nbsp; integrado à&nbsp;<span>API Django</span></p>
+                
+            <img src="{% static 'images/web_scraping.png' %}" alt="Lead generation tools">
+        </div>
+    </div>
+
+    <div class="section section-3">
+        <div class="section-content">
+            <h1>Hosteamento Web-Django</h1>
+            <p>API Django em conjunto com o MongoDB para hosteamento da aplicação, web scraping, tratamento de dados e display de plots em ambiente web.</p>
+            <img src="{% static 'images/web_development.png' %}" alt="Campaign tools">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
