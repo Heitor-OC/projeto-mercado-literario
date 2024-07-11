@@ -5,7 +5,6 @@ app_name = 'books'
 
 urlpatterns = [
     path('', views.render_home, name='home'),
-    path('upload_json/', views.upload_json_form, name='upload_json_form'),
     path('save_books/', views.save_books_data, name='save_books'),
     path('books/', views.display_books, name='display_books'),
     path('scrape_form/', views.scrape_form, name='scrape_form'),
